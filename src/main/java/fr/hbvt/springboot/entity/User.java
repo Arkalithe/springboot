@@ -2,9 +2,10 @@ package fr.hbvt.springboot.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,47 +13,46 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Data
-@Table(
-        indexes = {@Index(columnList = "slug")}
-)
-public class Lodging {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String uuid;
 
     @Column(nullable = false)
-    private String name;
+    private String firstname;
 
     @Column(nullable = false)
-    private int capacity;
+    private String lastname;
 
     @Column(nullable = false)
-    private boolean isAccessible;
+    private String email;
 
     @Column(nullable = false)
-    private int nightPrice;
-
-    @Column(columnDefinition = "TEXT")
-    private String description;
+    private String password;
 
     @Column(nullable = false)
-    private String slug;
+    private String role;
 
-    @OneToOne
+    @Column(nullable = false)
+    private boolean isVerified;
+
+    @Column(nullable = false)
+    private LocalDate birthAth;
+
+    private String phone;
+
+    private String photo;
+
+    @ManyToOne
     private Address address;
 
-    @OneToMany(mappedBy = "lodging")
-    private List<Media> medias = new ArrayList<>();
-
-    @OneToMany(mappedBy = "lodging")
+    @OneToMany(mappedBy = "user")
     private List<Booking> bookings = new ArrayList<>();
 
-    @OneToMany(mappedBy = "lodging")
+    @OneToMany(mappedBy = "user")
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToMany(mappedBy = "lodging")
+    @OneToMany(mappedBy = "user")
     private List<Favorite> favorites = new ArrayList<>();
-
-
 }

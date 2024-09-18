@@ -24,4 +24,9 @@ public class Media {
     @Column(nullable = false, length = 12)
     @NotBlank
     private String extension;
+
+    @ManyToOne()
+    @JoinColumn(nullable = false)
+    private Lodging lodging;
+
 }

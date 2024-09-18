@@ -1,10 +1,9 @@
 package fr.hbvt.springboot.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -12,27 +11,28 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Data
-public class Review {
-
+public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     @Column(nullable = false)
     private String content;
 
     @Column(nullable = false)
-    private float rating;
+    private float  rating;
 
     @Column(nullable = false)
-    private LocalDateTime date;
+    private LocalDateTime createAt;
 
-    @ManyToOne
     @JoinColumn(nullable = false)
+    @ManyToOne
+    private User user;
+
+    @JoinColumn(nullable = false)
+    @ManyToOne
     private Lodging lodging;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private User user;
 
 }
