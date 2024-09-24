@@ -39,5 +39,9 @@ public class Address {
     private String more;
 
     @Column(nullable = false)
-    private boolean isiBilled;
+    private boolean isBilled;
+
+    @ManyToOne
+    private User user;
+
 }

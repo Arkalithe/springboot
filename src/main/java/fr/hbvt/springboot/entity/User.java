@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,14 +39,19 @@ public class User {
     private boolean isVerified;
 
     @Column(nullable = false)
-    private LocalDate birthAth;
+    private LocalDate birthAt;
+
+    @Column(nullable = false)
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
 
     private String phone;
 
     private String photo;
 
-    @ManyToOne
-    private Address address;
+    @OneToMany(mappedBy = "user")
+    private List<Address> address = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Booking> bookings = new ArrayList<>();
@@ -55,4 +61,6 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Favorite> favorites = new ArrayList<>();
+
+
 }

@@ -2,6 +2,7 @@ package fr.hbvt.springboot.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
     @Column(nullable = false)
@@ -27,10 +28,12 @@ public class Review {
     @Column(nullable = false)
     private LocalDateTime date;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(nullable = false)
     private Lodging lodging;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(nullable = false)
     private User user;

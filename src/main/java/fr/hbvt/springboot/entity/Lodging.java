@@ -54,5 +54,6 @@ public class Lodging {
     @OneToMany(mappedBy = "lodging")
     private List<Favorite> favorites = new ArrayList<>();
 
-
+    @ManyToMany(mappedBy = "lodgings")
+    private List<Room> rooms = new ArrayList<>();
 }
