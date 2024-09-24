@@ -1,5 +1,6 @@
 package fr.hbvt.springboot.service;
 
+import fr.hbvt.springboot.exception.CustomEntityNotFoundException;
 import fr.hbvt.springboot.repository.BookingRepository;
 import fr.hbvt.springboot.entity.Booking;
 import fr.hbvt.springboot.dto.BookingDto;
@@ -38,7 +39,7 @@ public class BookingService implements ServiceListInterface<Booking, String, Boo
     
     @Override
     public Booking findById(String id) {
-    return bookingRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    return bookingRepository.findById(id).orElseThrow(CustomEntityNotFoundException::new);
     }
     
     @Override

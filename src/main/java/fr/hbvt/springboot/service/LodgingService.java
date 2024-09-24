@@ -1,5 +1,6 @@
 package fr.hbvt.springboot.service;
 
+import fr.hbvt.springboot.exception.CustomEntityNotFoundException;
 import fr.hbvt.springboot.repository.LodgingRepository;
 import fr.hbvt.springboot.entity.Lodging;
 import fr.hbvt.springboot.dto.LodgingDto;
@@ -38,7 +39,7 @@ public class LodgingService implements ServiceListInterface<Lodging, String, Lod
 
     @Override
     public Lodging findById(String id) {
-        return lodgingRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return lodgingRepository.findById(id).orElseThrow(CustomEntityNotFoundException::new);
     }
 
     @Override

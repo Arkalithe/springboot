@@ -1,5 +1,6 @@
 package fr.hbvt.springboot.service;
 
+import fr.hbvt.springboot.exception.CustomEntityNotFoundException;
 import fr.hbvt.springboot.repository.UserRepository;
 import fr.hbvt.springboot.entity.User;
 import fr.hbvt.springboot.dto.UserDto;
@@ -38,7 +39,7 @@ public class UserService implements ServiceListInterface<User, String, UserDto, 
 
     @Override
     public User findById(String id) {
-        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return userRepository.findById(id).orElseThrow(CustomEntityNotFoundException::new);
     }
 
     @Override

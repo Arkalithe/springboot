@@ -1,5 +1,6 @@
 package fr.hbvt.springboot.service;
 
+import fr.hbvt.springboot.exception.CustomEntityNotFoundException;
 import fr.hbvt.springboot.repository.FavoriteRepository;
 import fr.hbvt.springboot.entity.Favorite;
 import fr.hbvt.springboot.dto.FavoriteDto;
@@ -38,7 +39,7 @@ public class FavoriteService implements ServiceListInterface<Favorite, Long, Fav
     
     @Override
     public Favorite findById(Long id) {
-    return favoriteRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    return favoriteRepository.findById(id).orElseThrow(CustomEntityNotFoundException::new);
     }
     
     @Override

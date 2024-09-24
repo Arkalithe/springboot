@@ -1,5 +1,6 @@
 package fr.hbvt.springboot.service;
 
+import fr.hbvt.springboot.exception.CustomEntityNotFoundException;
 import fr.hbvt.springboot.repository.ReviewRepository;
 import fr.hbvt.springboot.entity.Review;
 import fr.hbvt.springboot.dto.ReviewDto;
@@ -38,7 +39,7 @@ public class ReviewService implements ServiceListInterface<Review, Long, ReviewD
 
     @Override
     public Review findById(Long id) {
-        return reviewRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return reviewRepository.findById(id).orElseThrow(CustomEntityNotFoundException::new);
     }
 
     @Override

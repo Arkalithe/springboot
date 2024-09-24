@@ -1,5 +1,6 @@
 package fr.hbvt.springboot.service;
 
+import fr.hbvt.springboot.exception.CustomEntityNotFoundException;
 import fr.hbvt.springboot.repository.MediaRepository;
 import fr.hbvt.springboot.entity.Media;
 import fr.hbvt.springboot.dto.MediaDto;
@@ -38,7 +39,7 @@ public class MediaService implements ServiceListInterface<Media, Long, MediaDto,
     
     @Override
     public Media findById(Long id) {
-    return mediaRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    return mediaRepository.findById(id).orElseThrow(CustomEntityNotFoundException::new);
     }
     
     @Override

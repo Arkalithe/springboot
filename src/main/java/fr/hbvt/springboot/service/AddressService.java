@@ -1,5 +1,6 @@
 package fr.hbvt.springboot.service;
 
+import fr.hbvt.springboot.exception.CustomEntityNotFoundException;
 import fr.hbvt.springboot.repository.AddressRepository;
 import fr.hbvt.springboot.entity.Address;
 import fr.hbvt.springboot.dto.AddressDto;
@@ -38,7 +39,7 @@ public class AddressService implements ServiceListInterface<Address, Long, Addre
     
     @Override
     public Address findById(Long id) {
-    return addressRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    return addressRepository.findById(id).orElseThrow(CustomEntityNotFoundException::new);
     }
     
     @Override

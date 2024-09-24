@@ -1,5 +1,6 @@
 package fr.hbvt.springboot.service;
 
+import fr.hbvt.springboot.exception.CustomEntityNotFoundException;
 import fr.hbvt.springboot.repository.RoomRepository;
 import fr.hbvt.springboot.entity.Room;
 import fr.hbvt.springboot.dto.RoomDto;
@@ -38,7 +39,7 @@ public class RoomService implements ServiceListInterface<Room, Long, RoomDto, Ro
 
     @Override
     public Room findById(Long id) {
-        return roomRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return roomRepository.findById(id).orElseThrow(CustomEntityNotFoundException::new);
     }
 
     @Override
